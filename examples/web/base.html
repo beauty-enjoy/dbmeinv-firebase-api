@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> base example | firebase dbmeinv</title>
+</head>
+<body>
+        <h3> base example </h3>
+        <p>Look at the console ... </p>
+        <hr>        
+        <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+        <script>
+            firebase.initializeApp({ // init firebase App
+                databaseURL: 'https://beauty-ad056.firebaseio.com',
+            });             
+            var dataRef = firebase.database().ref('dbmn/data')
+            var cid = 'cid2'
+            dataRef.child(cid) // cid* look at https://github.com/beauty-enjoy/dbmeinv-firebase-api#get-keys           
+            .orderByKey()
+            .limitToLast(10)
+            .once('value')
+            .then(function(snap){ return Object.keys(snap.val())}) // 2. get newest boob'posts keys
+            .then(function(keys){               
+                return Promise.all(keys.map(function(key){ // 3. get posts by keys                    
+                    return dataRef.child('posts').orderByKey().equalTo(key).once('child_added')
+                    .then(function(snap){ return snap.val() })
+                }))
+            })
+            .then(function(result){
+                // all result here
+                console.log('all the posts which cid is : [%s] \n',cid,result)
+            })
+        </script> 
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> authorData example | firebase dbmeinv</title>
+</head>
+<body>
+        <h3> authorData example </h3>
+        <p>Look at the console ... </p>
+        <hr>        
+        <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+        <script src="./base64.js"  ></script>
+        <script>
+            firebase.initializeApp({ // 1 init firebase App
+                databaseURL: 'https://beauty-ad056.firebaseio.com',
+            });             
+            var key =  '-KdzR_-HHfsbpuBfoppY';
+            var dataRef = firebase.database().ref('dbmn/data')            
+            dataRef.child('posts').orderByKey().equalTo(key).once('child_added') // 2 get posts by key
+            .then(function(snap){return snap.val()}) 
+            .then(function(posts){
+                /**  posts 
+                {  
+                    authorname:"喵喵酱",
+                    avatar:"https://img3.doubanio.com/icon/up145894398-2.jpg",
+                    cid:2,
+                    content:"无聊，想出去玩",
+                    date:1488194232000,
+                    id:"1170749",
+                    imageUrl:"http://ww2.sinaimg.cn/bmiddle/0060lm7Tgy1fd59zjee7jj30dw0dw3zr.jpg",
+                    images:[
+                       "http://ww4.sinaimg.cn/large/0060lm7Tgy1fd59zk7miqj30dw0afdgw.jpg",
+                       "http://ww2.sinaimg.cn/large/0060lm7Tgy1fd59zjee7jj30dw0dw3zr.jpg"],
+                    location:"常居: Praha, Czech Republic",
+                    title:"不爆照勾搭不到靠谱的蜀黍",
+                }
+                **/
+                // 3 .get keys by authorname 
+                return dataRef.child('authorname/'+doubleBase46encode(posts.authorname)).orderByKey().once('value')
+            })
+            .then(function(snap){
+                return Object.keys(snap.val())  // ["-KcqID9oblgG-OX5Nmyg", "-KdzRZdZinhRvIQsfPqa", "-KdzRZxS4mPlNRmJN5MK", "-KdzR_-HHfsbpuBfoppY"]
+            })
+            .then(function(keys){
+                return Promise.all(keys.map(function(key){ // 4. get posts by keys
+                    return dataRef.child('posts').orderByKey().equalTo(key).once('child_added')
+                    .then(function(snap){ return snap.val() })
+                }))
+            })
+            .then(function(result){
+                console.log('All posts which  authorname is :[ %s ] \n', result[0].authorname , result)
+            })
+
+          function doubleBase46encode(str){
+              return Base64.encode(Base64.encode(str))
+          }  
+        </script> 
+
+</body>
+</html>

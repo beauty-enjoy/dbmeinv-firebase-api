@@ -19,7 +19,8 @@ If you can not wait to see the beauty so [click on here](https://github.com/beau
 
 <h2 align="center"> API</h2>
 ### Direct access to JSON
-open https://beauty-ad056.firebaseio.com/dbmn/data/posts/-KcqIEF8cof93PBuQZ0m.json?print=pretty
+
+restful : https://beauty-ad056.firebaseio.com/dbmn/data/posts/-KcqIEF8cof93PBuQZ0m.json?print=pretty
 ```json
 {
   "authorname" : "泽尻笼儿",
@@ -34,27 +35,41 @@ open https://beauty-ad056.firebaseio.com/dbmn/data/posts/-KcqIEF8cof93PBuQZ0m.js
   "title" : "【晒】喜欢的请夸我，不喜欢的请抠眼珠子哈哈哈哈"
 }
 ```
-### Use Firebase api 
+### Use Firebase sdk
 
 ### get a posts
-above example is easy to understand but not graceful ，so we can use firebase web api
 
+> js web sdk examples
+`<script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>`
 ```js
-// this  xample for js web and node server
-import firebase from 'firebase/app'
-import 'firebase/database'
-firebase.initializeApp({ databaseURL: 'https://beauty-ad056.firebaseio.com' })
-const ref = firebase.database().ref('/dbmn').child('/data/posts') 
-ref.child('-KcqIEF8cof93PBuQZ0m').once('child_added')
-.then((snap) => console.log(snap.val())) // the result 
-
+    firebase.initializeApp({ // init firebase App
+        databaseURL: 'https://beauty-ad056.firebaseio.com',
+    });             
+    var dataRef = firebase.database().ref('dbmn/data')
+    var cid = 'cid2'
+    dataRef.child(cid) // cid* look at https://github.com/beauty-enjoy/dbmeinv-firebase-api#get-keys           
+    .orderByKey()
+    .limitToLast(2)
+    .once('value')
+    .then(function(snap){ return Object.keys(snap.val())}) // 2. get newest boob'posts keys
+    .then(function(keys){               
+        return Promise.all(keys.map(function(key){ // 3. get posts by keys                    
+            return dataRef.child('posts').orderByKey().equalTo(key).once('child_added')
+            .then(function(snap){ return snap.val() })
+        }))
+    })
+    .then(function(result){
+        // all result here
+        console.log('all the posts which cid is : [%s] \n',cid,result)
+    })
 ```
+
 client document [Android](https://firebase.google.com/docs/android/setup), [iOS](https://firebase.google.com/docs/ios/setup) ，[web](https://firebase.google.com/docs/web/setup), and [Servers](https://firebase.google.com/docs/server/setup) 
-## Get Keys
+
+###  Keys means
 
 |  cid    |  mean  |
 | ---- | ---- |
-| cid0    |  all    |
 | cid2    |  breast  |
 | cid3    |  leg      |
 | cid4    |  face      |
@@ -62,20 +77,8 @@ client document [Android](https://firebase.google.com/docs/android/setup), [iOS]
 | cid6    |  buttocks      |
 | cid7    |  stockings      |
 
-
-open https://beauty-ad056.firebaseio.com/dbmn/data/cid7.json?print=pretty
-
-or use firebase web api
-```js
-import firebase from 'firebase/app'
-import 'firebase/database'
-firebase.initializeApp({ databaseURL: 'https://beauty-ad056.firebaseio.com' })
-const ref = firebase.database().ref('/dbmn').child('/data/cid7') 
-ref.orderByKey().limitToLast(500).once('value')
-.then(snap => console.log(Object.keys(snap.val())))
-// result is ["KcqIA2PdjohXejHOzDz","KcqIEEeaKTfdQl0A0Tn","KcqIEEmm7x5b6chvfmn", ...]
 ```
-[more examples](https://github.com/beauty-enjoy/dbmeinv-firebase-api/tree/master/example)
+[more examples](https://github.com/beauty-enjoy/dbmeinv-firebase-api/tree/master/examples)
 
 <h2 align="center">Core Team</h2>
 
