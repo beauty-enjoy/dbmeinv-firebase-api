@@ -4,14 +4,14 @@
   </a>
   <h1>dbmeinv-firebase-api</h1>
   <p>
-    dbmeinv-firebase-api Provides a wealth of beautiful pictures, and stored in the firebase real time database
+    dbmeinv-firebase-api Provides a wealth of beautiful pictures (about 90K ) stored in the firebase real time database
   <p>
 </div>
 
 <h2 align="center">Introduction</h2>
-I crawl data every day from [dbmeinv.com](http://dbmeinv.com) and store in firebase . 
-this repo is to show you how to get beauty data from my firebase database
-If you can not wait to see the beauty so [click on here](https://github.com/beauty-enjoy/beauty) to see the effect
+I crawl data every day from [dbmeinv.com](http://dbmeinv.com) and store in firebase .  
+this repo is to show you how to get beauty data from my firebase database . 
+If you can't wait to see the beauty , [Click on here](https://github.com/beauty-enjoy/beauty) to see the effect !!
 
 <h2 align="center"> API</h2>
 > you could read [more examples](https://github.com/beauty-enjoy/dbmeinv-firebase-api/tree/master/examples) directly
@@ -65,7 +65,7 @@ restful : https://beauty-ad056.firebaseio.com/dbmn/data/posts/-KcqIEF8cof93PBuQZ
         console.log('all the posts which cid is : [%s] \n',cid,result)
     })
     
-    <script>
+    </script>
  </body>
 
 ```
