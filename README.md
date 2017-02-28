@@ -37,10 +37,11 @@ restful : https://beauty-ad056.firebaseio.com/dbmn/data/posts/-KcqIEF8cof93PBuQZ
 ```
 ### Use Firebase sdk
 
-### get a posts
 
 > js web sdk examples
+
 `<script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>`
+
 ```js
     firebase.initializeApp({ // init firebase App
         databaseURL: 'https://beauty-ad056.firebaseio.com',
@@ -77,7 +78,7 @@ client document [Android](https://firebase.google.com/docs/android/setup), [iOS]
 | cid6    |  buttocks      |
 | cid7    |  stockings      |
 
-```
+
 [more examples](https://github.com/beauty-enjoy/dbmeinv-firebase-api/tree/master/examples)
 
 <h2 align="center">Core Team</h2>
