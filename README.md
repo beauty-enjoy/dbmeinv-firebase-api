@@ -38,9 +38,12 @@ restful : https://beauty-ad056.firebaseio.com/dbmn/data/posts/-KcqIEF8cof93PBuQZ
 
 > js web sdk examples
 
-`<script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>`
 
-```js
+```html
+  
+ <body>
+    <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+    <script>
     firebase.initializeApp({ // init firebase App
         databaseURL: 'https://beauty-ad056.firebaseio.com',
     });             
@@ -61,6 +64,10 @@ restful : https://beauty-ad056.firebaseio.com/dbmn/data/posts/-KcqIEF8cof93PBuQZ
         // all result here
         console.log('all the posts which cid is : [%s] \n',cid,result)
     })
+    
+    <script>
+ </body>
+
 ```
 
 client document [Android](https://firebase.google.com/docs/android/setup), [iOS](https://firebase.google.com/docs/ios/setup) ，[web](https://firebase.google.com/docs/web/setup), and [Servers](https://firebase.google.com/docs/server/setup) 
