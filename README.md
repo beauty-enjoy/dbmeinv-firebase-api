@@ -84,8 +84,9 @@ client document [Android](https://firebase.google.com/docs/android/setup), [iOS]
 | cid7    |  stockings      |
 
 <h2 align="center">DB Structure</h2>
-<img width="300" src="https://olxvlcccu.qnssl.com/blog/rcg96.jpg?imageslim">
-
+<div align="center">
+  <img width="300" src="https://olxvlcccu.qnssl.com/blog/rcg96.jpg?imageslim">
+</div>
 
 <h2 align="center">Core Team</h2>
 
