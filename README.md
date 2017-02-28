@@ -9,15 +9,12 @@
 </div>
 
 <h2 align="center">Introduction</h2>
->  Firebase enables easy access from [Android](https://firebase.google.com/docs/android/setup), [iOS](https://firebase.google.com/docs/ios/setup) ，[web](https://firebase.google.com/docs/web/setup), and [Servers](https://firebase.google.com/docs/server/setup) .
-
-We divided the beauty into several categories, and will be synchronized to the server .
-
-like `breast` `leg`  `butts` and so on ... 
-
+I crawl data every day from [dbmeinv.com](http://dbmeinv.com) and store in firebase . 
+this repo is to show you how to get beauty data from my firebase database
 If you can not wait to see the beauty so [click on here](https://github.com/beauty-enjoy/beauty) to see the effect
 
 <h2 align="center"> API</h2>
+> you could read [more examples](https://github.com/beauty-enjoy/dbmeinv-firebase-api/tree/master/examples) directly
 ### Direct access to JSON
 
 restful : https://beauty-ad056.firebaseio.com/dbmn/data/posts/-KcqIEF8cof93PBuQZ0m.json?print=pretty
@@ -79,7 +76,6 @@ client document [Android](https://firebase.google.com/docs/android/setup), [iOS]
 | cid7    |  stockings      |
 
 
-[more examples](https://github.com/beauty-enjoy/dbmeinv-firebase-api/tree/master/examples)
 
 <h2 align="center">Core Team</h2>
 
