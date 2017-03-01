@@ -85,11 +85,10 @@ client document [Android](https://firebase.google.com/docs/android/setup), [iOS]
 
 
 <h2 align="center">Related Projects</h2>
-* [Vue](https://github.com/vuejs/vuex) Version : [Beauty](https://github.com/beauty-enjoy/beauty)
 
-### Projects To Rich
 > we will add a `Related Projects` for your repo which useing `dbmeinv-firebase-api`
 
+- [x] [Vue](https://github.com/vuejs/vuex) Version : [Beauty](https://github.com/beauty-enjoy/beauty)
 - [ ] [Weex](https://github.com/alibaba/weex) Version App
 - [ ] [React Native](https://facebook.github.io/react-native/) Version App
 - [ ] iOS Native Version App
