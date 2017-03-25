@@ -9,11 +9,13 @@
 </div>
 
 <h2 align="center">Introduction</h2>
+
 I crawl data every day from [dbmeinv.com](http://dbmeinv.com) and store in firebase .  
 this repo is to show you how to get beauty data from my firebase database . 
 If you can't wait to see the beauty , [Click on here](https://github.com/beauty-enjoy/beauty) to see the effect !!
 
 <h2 align="center"> API</h2>
+
 > you could read [more examples](https://github.com/beauty-enjoy/dbmeinv-firebase-api/tree/master/examples) directly
 
 ### Direct access to JSON
